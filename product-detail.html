@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/header-footer.css">
+    <!--css file for each page-->
+    <!--<link rel="stylesheet" href="css/smoothproducts.css">-->
+    <link rel="stylesheet" href="css/product-detail.css">
+</head>
+<body>
+<!--MENU NAV-->
+<header>
+    <!--Modal Cart-->
+    <div class="modal fade bs-example-modal-lg" id="myCart" tabindex="-1" role="dialog"
+         aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span class="glyphicon glyphicon-shopping-cart"></span>
+                        Giỏ hàng của bạn</h4>
+                </div>
+                <div class="modal-body">
+                    <h3 style="padding-left: 20px;" class="show" id="announce">Giỏ hàng rỗng <img
+                            style="max-width: 45px;"
+                            src="img/icon_LargeShoppingCart.png" alt=""></h3>
+                    <div class="table-responsive hidden" id="table_product">
+                        <table class="table text-uppercase text-center">
+                            <thead>
+                            <tr>
+                                <th class="text-center" width="420px">sản phẩm</th>
+                                <th class="text-center">đơn giá</th>
+                                <th class="text-center">số lượng</th>
+                                <th class="text-center">xóa</th>
+                            </tr>
+                            </thead>
+                            <tbody id="cart-nhe">
+                            <!--Content appended here-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><span
+                            class="fa fa-long-arrow-left"></span>
+                        Tiếp tục mua hàng
+                    </button>
+                    <a type="button" class="btn" href="my-cart.html" style="padding: 10px 25px;">Xem giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal User Info-->
+    <div class="modal fade bs-example-modal-lg" id="userInfo" tabindex="-1" role="dialog"
+         aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><span class="fa fa-user"></span>
+                        Tài khoản</h4>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-xs-7 form-login-signup">
+                        <div>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" id="user-tab-login" class="text-uppercase active"><a
+                                        href="#login"
+                                        aria-controls="home"
+                                        role="tab"
+                                        data-toggle="tab"><span
+                                        class="fa fa-sign-in" aria-hidden="false"></span> đăng nhập</a>
+                                </li>
+                                <li role="presentation" id="user-tab-register" class="text-uppercase"><a
+                                        href="#register"
+                                        aria-controls="profile" role="tab"
+                                        data-toggle="tab"><span
+                                        class="fa fa-user-plus" aria-hidden="false"></span> đăng ký</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <!--form-login-->
+                                <div role="tabpanel" class="tab-pane fade in active" id="login">
+                                    <br>
+                                    <form class="form-horizontal" role="form">
+                                        <div class="row">
+                                            <!--<div class="col-xs-5">Email or phone number</div>-->
+                                            <div class="col-xs-12 text-center">
+                                                <input type="text" placeholder="Email hoặc số điện thoại">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!--<div class="col-xs-5">Password</div>-->
+                                            <div class="col-xs-12 text-center">
+                                                <input type="text" placeholder="Mật khẩu">
+                                                <p class="text-primary">Quên mật khẩu?</p>
+                                            </div>
+                                        </div>
+                                        <div class="row text-center">
+                                            <button data-dismiss="modal" class="btn">Đăng nhập</button>
+                                            <p>Đăng nhập bằng tài khoản khác</p>
+                                            <span class="fa fa-facebook-square" aria-hidden="true"></span>
+                                            <span class="fa fa-google-plus-square" aria-hidden="true"></span>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!--form register-->
+                                <div role="tabpanel" class="tab-pane fade" id="register">
+                                    <br>
+                                    <form>
+                                        <div class="row">
+                                            <!--<div class="col-xs-5">Email</div>-->
+                                            <div class="col-xs-12 text-center">
+                                                <input type="text" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!--<div class="col-xs-5">Phone number</div>-->
+                                            <div class="col-xs-12 text-center">
+                                                <input type="text" placeholder="Số điện thoại">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!--<div class="col-xs-5">Password</div>-->
+                                            <div class="col-xs-12 text-center">
+                                                <input type="text" placeholder="Mật khẩu">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!--<div class="col-xs-5">Confirm password</div>-->
+                                            <div class="col-xs-12 text-center">
+                                                <input type="text" placeholder="Xác nhận mật khẩu">
+                                            </div>
+                                        </div>
+                                        <div class="row text-center">
+                                            <button data-dismiss="modal" class="btn text-uppercase">Đăng ký</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5" id="salary">
+                        <div class="row text-center text-uppercase">Quyền lợi khi đăng ký thành viên</div>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-2"><span class="glyphicon glyphicon-ok"></span></div>
+                            <div class="col-xs-10">Vận chuyển siêu tốc</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2"><span class="glyphicon glyphicon-ok"></span></div>
+                            <div class="col-xs-10">Sản phẩm đa dạng</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2"><span class="glyphicon glyphicon-ok"></span></div>
+                            <div class="col-xs-10">Đổi trả dễ dàng</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2"><span class="glyphicon glyphicon-ok"></span></div>
+                            <div class="col-xs-10">Đăng ký tích điểm để đưọc hoàn tiền vào thẻ</div>
+                        </div>
+                        <br>
+                        <div class="row text-center">
+                            <a href="#register" aria-controls="profile" data-toggle="tab">
+                                <button id="user-info-register" class="btn text-uppercase">đăng ký</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Menu Nav Fixed Top-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Logo and Menu Button for Mobile View -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <img src="img/logofooter.png" alt="" class="img-responsive">
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button>
+
+                <!--drop-down button for user-list-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+                    <span class="glyphicon glyphicon-user" aria-hidden="false"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li id="down">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Menu</a>
+                        <ul class="dropdown-menu">
+                            <li class="myMenu"><a href="#">Thời trang phượt<span
+                                    class="glyphicon glyphicon-triangle-right pull-right"></span></a>
+                                <ul>
+                                    <li><a href="#">Quần áo</a></li>
+                                    <li><a href="#">Giày dép</a></li>
+                                    <li><a href="#">Balo</a></li>
+                                </ul>
+                            </li>
+                            <li class="myMenu"><a href="#">Phụ kiện phượt<span
+                                    class="glyphicon glyphicon-triangle-right pull-right"></span></a>
+                                <ul>
+                                    <li><a href="#">Thiết bị điện tử</a></li>
+                                    <li><a href="#">Dụng cụ đa năng</a></li>
+                                </ul>
+                            </li>
+                            <li class="myMenu"><a href="product-list.html">Phượt cùng xe</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+
+                <!--menu-right: search form, cart, account-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="search-form">
+                        <form class="navbar-form navbar-left hidden-print">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                        </form>
+                    </li>
+                    <li class="hidden-xs" id="button-user-info" data-toggle="modal"
+                        data-target="#userInfo"><a>đăng nhập</a></li>
+                    <li class="hidden-xs" data-toggle="modal"
+                        data-target="#myCart"><a><span class="glyphicon glyphicon-shopping-cart"
+                                                       aria-hidden="false"><sup id="index">0</sup></span></a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+
+            <!--User Menu in Mobile View-->
+            <div class="collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&#32;&#32;&#32;Đăng nhập</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>&#32;&#32;&#32;Giỏ hàng của
+                        tui</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!--BANNER-->
+<section id="banner">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="img/banner/Banner-BABK.jpg" alt="" class="img-responsive center-block">
+                <div class="carousel-caption">
+                    <h1 class="text-uppercase">Cửa hàng đồ Phượt Giá Rẻ</h1>
+                    <p>Cam kết mang đến cho bạn những sản phẩm chất lượng với mức giá cực ưu đãi</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/banner/Utah-hiking-thumbnail-Banner.jpg" alt="" class="img-responsive center-block">
+                <div class="carousel-caption">
+                    <h1 class="text-uppercase">Cuộc sống của tôi là "trên những con đường"</h1>
+                    <button class="hidden-xs">
+                        <small>Xem thêm</small>
+                    </button>
+                    <p></p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/banner/content-explore-habitats.jpg" alt="" class="img-responsive center-block">
+                <div class="carousel-caption">
+                    <h1 class="text-uppercase">Phượt Style</h1>
+                    <h1 class="text-uppercase">Luôn đồng hành cùng bạn</h1>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="row"><img src="img/Ahri_divider_1-600x1131.png" alt="" class="img-responsive"></div>
+</section>
+
+<!--CONTENT-->
+<section class="content container">
+    <div class="row sale">
+        <div class="col-xs-12 col-sm-12 thumbnail">
+            <img src="img/Sale-Banner-1920-x-600-FINAL.jpg" alt="">
+        </div>
+    </div>
+    <!--Breadcrumb-->
+    <div class="row">
+        <div class="breadcrumb">
+            <div><a href="index.html"><i class="fa fa-home fa-lg" aria-hidden="false"></i></a></div>
+            <!--<span class="corner-left-bottom"></span>-->
+            <div class="active"><a href="" class="text-muted"><span class="fa fa-motorcycle" aria-hidden="true"></span></a>
+            </div>
+            <div class="active"><a href="" class="text-muted">Kính chống bụi Maidis</a></div>
+        </div>
+    </div>
+    <h3 class="title text-center text-uppercase visible-xs">Kính chống bụi Maidis</h3>
+
+    <!--Sidebar-->
+    <div class="sidebar hidden-xs col-sm-3">
+        <!--Category-->
+        <h4 class="text-uppercase text-center">Danh mục</h4>
+        <div class="panel panel-default">
+            <!-- Thhoi trang -->
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordian" href="#thoitrang" class="">
+                    <span class="pull-right"><i class="fa fa-caret-down"></i></span>
+                    Thời trang phượt thủ
+                </a>
+            </div>
+            <div id="thoitrang" class="panel-collapse in" style="height: auto;">
+                <div class="panel-body">
+                    <ul>
+                        <li><a href="#">Quần áo </a></li>
+                        <li><a href="#">Giày dép </a></li>
+                        <li><a href="#">Balo </a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--Phu kien-->
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordian" href="#phukien" class="">
+                    <span class="pull-right"><i class="fa fa-caret-down"></i></span>
+                    Phụ kiện cool
+                </a>
+            </div>
+            <div id="phukien" class="panel-collapse in" style="height: auto;">
+                <div class="panel-body">
+                    <ul>
+                        <li><a href="#">Thiết bị điện, điện tử </a></li>
+                        <li><a href="#">Dụng cụ dazinang </a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--Phuot xe-->
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordian" href="" class="">Phượt cùng xe </a>
+            </div>
+        </div>
+        <br>
+        <!--Price-->
+        <br>
+    </div>
+
+    <!--9 products-->
+    <div class="col-xs-12 col-sm-9 product-list">
+        <div class="row">
+            <h3 class="title text-center text-uppercase hidden-xs">Kính chống bụi Maidis</h3>
+        </div>
+        <br>
+        <!--Product-list-->
+        <div class="product-detail">
+            <!--Image-->
+            <div class="col-xs-12 col-sm-6 text-center image">
+                <div class="single-product-image-inner thumbnail">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="one">
+                            <a class="venobox vbox-item" href="img/product-detail/kinh-chong-bui-Maidis-13.jpg"
+                               data-gall="gallery"
+                               title="">
+                                <img src="img/product-detail/kinh-chong-bui-Maidis-13.jpg" alt="">
+                            </a>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="two">
+                            <a class="venobox vbox-item" href="img/product-detail/kinh-chong-bui-Maidis-14.jpg"
+                               data-gall="gallery"
+                               title="">
+                                <img src="img/product-detail/kinh-chong-bui-Maidis-14.jpg" alt="">
+                            </a>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="three">
+                            <a class="venobox vbox-item" href="img/product-detail/kinh-chong-bui-Maidis-16.jpg"
+                               data-gall="gallery"
+                               title="">
+                                <img src="img/product-detail/kinh-chong-bui-Maidis-16.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Nav tabs -->
+                    <ul class="product-tabs" role="tablist">
+                        <li role="presentation" class=""><a href="#one" aria-controls="one" role="tab" data-toggle="tab"
+                                                            aria-expanded="false"><img
+                                src="img/product-detail/kinh-chong-bui-Maidis-13.jpg" alt=""></a></li>
+                        <li role="presentation" class=""><a href="#two" aria-controls="two" role="tab" data-toggle="tab"
+                                                            aria-expanded="true"><img
+                                src="img/product-detail/kinh-chong-bui-Maidis-14.jpg" alt=""></a></li>
+                        <li role="presentation" class=""><a href="#three" aria-controls="three" role="tab"
+                                                            data-toggle="tab" aria-expanded="false"><img
+                                src="img/product-detail/kinh-chong-bui-Maidis-16.jpg" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--Information-->
+            <div class="col-xs-12 col-sm-6 info">
+                <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <img src="img/product-detail/50_percent_off.png" alt="" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span
+                        class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span
+                        class="glyphicon glyphicon-star-empty"></span>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    <small class="text-uppercase">còn hàng</small>
+                </div>
+                <br>
+                <hr class="divide">
+                <div class="row text-center" id="price">
+                    <h2>
+                        90.000đ
+                        <del>
+                            <small>180.000đ</small>
+                        </del>
+                    </h2>
+                </div>
+                <hr class="divide">
+                <div class="row" id="size">
+                    <div class="col-xs-6 text-center">Size
+                        <select title="">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 text-center" id="quantity">Số lượng
+                        <input title="" type="number" value="1" style="width: 35px; height: 20px">
+                    </div>
+                </div>
+                <div class="row text-center" id="add-to-cart">
+                    <button class="text-uppercase" onclick="addToCart(this)"><span class="fa fa-shopping-cart"></span>
+                        Thêm vào giỏ hàng
+                    </button>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">Tags: <a href="">Kính chống bụi Maidis</a>,
+                        <a href="">kính đi xe đạp</a>, <a href="">kính mát</a>, <a href="">mắt kính chống bụi</a>,
+                        <a href="">mắt kính thời trang</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+    </div>
+    <br>
+
+    <!--Description-->
+    <div class="col-xs-12 description">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                                      data-toggle="tab">Chi tiết</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Hình
+                ảnh</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                       data-toggle="tab">Bình luận</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <br>
+                <h4>Kính chống bụi Maidis</h4>
+                <p>Với tròng kính chống vỡ, gọng kính có lỗ thay kính và lớp đệm êm mắt khi đeo</p>
+                <p>Gọng kính có lớp đệm cao su êm tai khi đeo</p>
+                <p>Kính có 3 màu lựa chọn</p>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="messages">
+                <div id="carousel-example-generic-ahihi" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic-ahihi" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic-ahihi" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic-ahihi" data-slide-to="2"></li>
+                        <li data-target="#carousel-example-generic-ahihi" data-slide-to="3"></li>
+                        <li data-target="#carousel-example-generic-ahihi" data-slide-to="4"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active text-center">
+                            <img src="img/product-detail/kinh-chong-bui-Maidis-6.jpg" alt="...">
+                            <div class="carousel-caption"></div>
+                        </div>
+                        <div class="item text-center">
+                            <img src="img/product-detail/kinh-chong-bui-Maidis-7.jpg" alt="...">
+                            <div class="carousel-caption"></div>
+                        </div>
+                        <div class="item text-center">
+                            <img src="img/product-detail/kinh-chong-bui-Maidis-9.jpg" alt="...">
+                            <div class="carousel-caption"></div>
+                        </div>
+                        <div class="item text-center">
+                            <img src="img/product-detail/kinh-chong-bui-Maidis-12.jpg" alt="...">
+                            <div class="carousel-caption"></div>
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic-ahihi" role="button"
+                       data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic-ahihi" role="button"
+                       data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <div class="media">
+                    <div class="media-body">
+                        <div class="tg-line-form">
+                                        <textarea name="" cols="30" rows="5" class="input"
+                                                  placeholder="   Ý kiến của bạn (vui lòng gõ tiếng Việt có dấu)"
+                                                  id="txtaComment"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="tg-line-form">
+                                    <input type="text" class="input" placeholder="   Tên của bạn" id="txtName">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="tg-line-form">
+                                    <input type="email" class="input" placeholder="   Email" id="txtEmail">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="danhgia-sp">
+                                    <b>Đánh giá sản phẩm :</b>
+                                    <span style="color: #ff6c0f;">
+                                        <span class="glyphicon glyphicon-star-empty"></span><span
+                                            class="glyphicon glyphicon-star-empty"></span><span
+                                            class="glyphicon glyphicon-star-empty"></span><span
+                                            class="glyphicon glyphicon-star-empty"></span><span
+                                            class="glyphicon glyphicon-star-empty"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="tg-line-form">
+                                    <a href="javascript:void(0);" class="button button-blue" id="idGui">Gửi</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="feedback col-xs-12">
+        <div class="row"><h4 class="text-center text-uppercase" style="font-weight: bold; color: #fa4107">phản hồi từ
+            khách hàng</h4></div>
+        <div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="thumbnail">
+                    <div class="col-xs-6 col-xs-offset-3"><img
+                            src="img/user-cmts/10427363_763419687011878_735289422734803709_n.jpg" alt=""
+                            class="img-responsive" style="border-radius: 50%"></div>
+                    <div class="ahihi"><h4>Lương Phạm</h4></div>
+                    <div><span class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star-empty"></span></div>
+                    <p>Chất lượng rất tốt! Mũ bảo hiểm dùng rất đẹp và bền. Chuyển phát khá nhanh</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="thumbnail">
+                    <div class="col-xs-6 col-xs-offset-3"><img
+                            src="img/user-cmts/13681082_1068839663183131_2814283030401983189_n.jpg" alt=""
+                            class="img-responsive" style="border-radius: 50%"></div>
+                    <div class="ahihi"><h4>Ti Nguyễn</h4></div>
+                    <div><span class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star-empty"></span></div>
+                    <p>Lần đầu tiên thử mua hàng ở đây và khá ưng ý với mẫu mã các mặt hàng. Tuy nhiên nên ship hàng
+                        nhanh hơn 1 chút</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="thumbnail">
+                    <div class="col-xs-6 col-xs-offset-3"><img
+                            src="img/user-cmts/13935036_1823223287897310_4147416181736882369_n.jpg" alt=""
+                            class="img-responsive" style="border-radius: 50%"></div>
+                    <div class="ahihi"><h4>Đức Việt</h4></div>
+                    <div><span class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star-empty"></span></div>
+                    <p>Rất nhiều loại kính đẹp, style. Giá cả cũng rất ổn, cộng thêm thường có các chương trình khuyến
+                        mãi.</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="thumbnail">
+                    <div class="col-xs-6 col-xs-offset-3"><img
+                            src="img/user-cmts/14183760_558482461021632_2047024328098479732_n.jpg" alt=""
+                            class="img-responsive" style="border-radius: 50%"></div>
+                    <div class="ahihi"><h4>Nghĩa Thân</h4></div>
+                    <div><span class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span
+                            class="glyphicon glyphicon-star-empty"></span></div>
+                    <p>Đẹp! Nhưng giá thì như hàng Tàu. Tuy nhiên vẫn xứng đáng 5 sao.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Trend items-->
+<section class="container trend-items">
+    <!--Trends-->
+    <h3 class="title text-center text-uppercase">có thể bạn muốn xem</h3>
+    <br>
+    <div class="col-xs-6 col-sm-3">
+        <div class="thumbnail thumbnail-rela">
+            <a href=""><img src="img/other-product/kinh-di-dem-night-view-1.jpg" alt="">
+            </a>
+            <h4>Kính Night View</h4>
+            <p>Kính đi đêm night view là một người bạn thân thiết với phượt thủ vào ban đêm, giúp giảm thiểu tai nạn do
+                bị chói lóa đèn xe ngược chiều</p>
+            <div><a href=""><input title="" type="text" value="Xem thêm" class="btn"></a></div>
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <div class="thumbnail thumbnail-rela" style="position: relative;">
+            <a href=""><img src="img/other-product/kinh-chong-bui-Honeywell-A700-den-2.jpg" alt=""
+                            class="img-responsive">
+            </a>
+            <h4>Kính chống bụi Honeywell</h4>
+            <p>Kính chống bụi Honeywell ôm sát mắt chống bụi, chống lóa tốt với thiết kế gọn nhẹ, dễ đeo, tiện lợi khi
+                đi đường, bảo quản dễ dàng</p>
+            <input title="" type="text" value="Xem thêm" class="btn" style="position: absolute;">
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <div class="thumbnail thumbnail-rela" style="position: relative;">
+            <a href=""><img src="img/other-product/kinh-chong-bui-Double-Shield-1-4.jpg" alt=""
+                            class="img-responsive">
+            </a>
+            <h4>Kính chống bụi Shield</h4>
+            <p>Chống tia cực tím, chống trầy, không vỡ. Kính được tráng màng chống hơi nước, giúp kính không bị mờ khi
+                hít thở hoặc khi đi mưa.</p>
+            <input title="" type="text" value="Xem thêm" class="btn" style="position: absolute;">
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <div class="thumbnail thumbnail-rela" style="position: relative;">
+            <a href=""><img src="img/other-product/kinh-cho-mu-34-ly-goggle-2.jpg" alt="" class="img-responsive">
+            </a>
+            <h4>Kính ly màu khói</h4>
+            <p>Kính cho các loại mũ bảo hiểm 3/4, mũ cào cào. Kính ly goggle màu khói</p>
+            <input title="" type="text" value="Xem thêm" class="btn" style="position: absolute;">
+        </div>
+    </div>
+</section>
+
+<!--FOOTER-->
+<footer class="container-fluid service">
+    <!--Service-->
+    <div class="container">
+        <div class="row text-center" id="service">
+            <div class="col-xs-12 col-sm-4">
+                <span class="fa fa-truck"></span>
+                <br>
+                <strong class="text-uppercase">Free ship nội thành</strong>
+                <p class="text-justify">Giao hàng miễn phí đối với đơn hàng từ 1.000.000 trong nội thành các tỉnh:
+                    Hòa Bình, Tuyên Quang, Phú Thọ, Vĩnh Phúc, Vĩnh Phú, Yên Bái, Nam Định, Hà Nam, Hải Phòng, Quảng
+                    Ninh.</p>
+            </div>
+            <hr class="divide">
+            <div class="col-xs-12 col-sm-4">
+                <span class="fa fa-assistive-listening-systems"></span>
+                <br>
+                <strong class="text-uppercase">Dịch vụ hỗ trợ</strong>
+                <p class="text-justify">Hỗ trợ online qua skype hoặc chat qua giao diện desktop.</p>
+            </div>
+            <hr class="divide">
+            <div class="col-xs-12 col-sm-4">
+                <span class="fa fa-undo"></span>
+                <br>
+                <strong class="text-uppercase">Đổi trả trong vòng 7 ngày</strong>
+                <p class="text-justify">Sản phẩm hỏng hóc, lỗi thiết kế được đổi trả bằng một sản phẩm cùng giá. Free
+                    phí vận chuyển đổi trả
+                    hàng.</p>
+            </div>
+        </div>
+    </div>
+    <hr class="divide divide-service-and-footer">
+    <br>
+    <div class="container">
+        <!--Contact & Newsletter-->
+        <div class="row text-justify">
+            <!--Contact-->
+            <div class="col-xs-12 col-sm-6" id="contact">
+                <strong>Liên hệ</strong>
+                <div class="row">
+                    <div class="col-xs-6"><span class="fa fa-phone"></span> (126)-238-1124</div>
+                    <div class="col-xs-6">
+                        <span class="fa fa-facebook"></span>
+                        <span class="fa fa-twitter"></span>
+                        <span class="fa fa-instagram"></span>
+                        <span class="fa fa-google-plus"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6"><span class="fa fa-envelope"></span> diphuot@gmail.com</div>
+                    <div class="col-xs-6"><span class="fa fa-clock-o"></span> 9h-21h</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8"><span class="fa fa-map-marker"></span> 68, Nguyễn Chí Thanh, Ba Đình, Hà Nội
+                    </div>
+                    <div class="col-xs-4"></div>
+                </div>
+
+                <br>
+            </div>
+
+            <!--Newsletter-->
+            <div class="col-xs-12 col-sm-6" id="newsletter">
+                <strong>Nhận tin khuyến mãi</strong>
+                <p>Bạn muốn nhận thông tin khuyến mãi mới nhất? Subscribe ngay!</p>
+                <form action="" class="form-inline">
+                    <input type="text" placeholder="Your email">
+                    <button class="text-uppercase btn btn-sm">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr class="divide divide-service-and-footer">
+    <div class="row text-center">Copyright 2016 &#169; Allright reserved</div>
+    <br>
+</footer>
+
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/header-footer.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jQRangeSlider-min.js"></script>
+<script src="js/flipclock.min.js"></script>
+<script>
+    //<!--
+    function addToCart(button) {
+//        console.log(old_product_name);
+        var quantity = $('#index').html();
+        if ($.isNumeric(quantity)) {
+            quantity = Number(quantity);
+            quantity += 1;
+        } else {
+            var old_product_name = "";
+            quantity = 1;
+        }
+//        inscrease number of items in cart
+        $('#index').html(quantity);
+
+        if (quantity > 0) {
+            $('#table_product').removeClass('hidden');
+            $('#announce').removeClass('show');
+            $('#announce').addClass('hidden');
+        }
+
+//        get full html content
+        var info = button.parentNode;
+        info = info.parentNode;
+        info = info.parentNode.innerHTML;
+
+        console.log(info);
+//        convert them to string
+        info = info.innerHTML;
+//        split into array by ">"
+        var array_info = info.split('>');
+
+//        variables include value
+        var include_image_url = array_info[1];
+        var include_price = array_info[4];
+        var include_name = array_info[7];
+        var i;
+
+        var image_url = "";
+        for (i = 10; i < include_image_url.length; i++) {
+            if (include_image_url.charAt(i) === '"') break;
+            image_url += include_image_url.charAt(i);
+        }
+
+        var unit_price = "";
+        for (i = 0; i < include_price.length; i++) {
+            if (include_price.charAt(i) == '<') break;
+            unit_price += include_price.charAt(i);
+        }
+
+        var product_name = "";
+        for (i = 0; i < include_name.length; i++) {
+            if (include_name.charAt(i) == "<") break;
+            product_name += include_name.charAt(i);
+        }
+
+        $('#cart-nhe').append('<tr class="product-in-cart"><td class="row"><div class="col-xs-4">' +
+                '<img src="' + image_url + '" alt="music" class="img-responsive"></div>' +
+                '<div class="col-xs-8"><div class="row text-left"><h4 class="product-name">' + product_name + '</h4></div></div></td>' +
+                '<td><h4 class="price"></h4>' + unit_price + '</td>' +
+                '<td><input title="" type="number" value="1" class="quantity"></td>' +
+                '<td><span class="glyphicon glyphicon-trash" onclick="moveToTrash(this)"></span></td></tr>');
+    }
+    //-->
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+.content .breadcrumb {
+  background: transparent;
+  margin-bottom: 0;
+}
+
+.content .breadcrumb > div > a {
+  color: white;
+}
+
+.content .breadcrumb > div {
+  display: inline-block;
+  padding: 3px 12px;
+  background: #ff6c0f;
+  border: 1px solid #ff6c0f;
+  position: relative;
+  margin-right: 11px;
+}
+
+.content .breadcrumb > div::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 100%;
+  width: 0;
+  height: 0;
+  border-left: 7px solid #ff6c0f;
+  border-top: 14px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 14px solid #ff6c0f;
+}
+
+.content .breadcrumb > div.active::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -14px;
+  width: 0;
+  height: 0;
+  border-top: 14px solid #ff6c0f;
+  border-left: 7px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-right: 7px solid #ff6c0f;
+}
+
+.content .panel,
+.content .tab-content input,
+.content .panel,
+.content .tab-content textarea {
+  background-color: transparent;
+  -webkit-box-shadow: 4px 3px 14px 1px rgba(133, 133, 133, 0.62);
+  -moz-box-shadow: 4px 3px 14px 1px rgba(133, 133, 133, 0.62);
+  box-shadow: 4px 3px 14px 1px rgba(133, 133, 133, 0.62);
+  /* border-color: #fa4107; */
+}
+
+.content .user-info .input-boxx {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.content .user-info input {
+  width: 75%;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  background-color: white;
+  -webkit-box-shadow: 4px 3px 14px 1px rgba(133, 133, 133, 0.62);
+  -moz-box-shadow: 4px 3px 14px 1px rgba(133, 133, 133, 0.62);
+  box-shadow: 4px 3px 14px 1px rgba(133, 133, 133, 0.62);
+}
+
+.content .user-info textarea {
+  width: 75%;
+  background: white;
+}
+
+.content .user-info button {
+  color: white;
+  background: #fa4107;
+  background: -webkit-linear-gradient(#ff6c0f, #fa4107);
+  background: linear-gradient(#ff6c0f, #fa4107);
+  border: 1px solid transparent;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 5px 25px;
+}
+
+.content .user-info button:hover {
+  background: #ff6c0f;
+  background: -webkit-linear-gradient(#fa4107, #ff6c0f);
+  background: linear-gradient(#fa4107, #ff6c0f);
+  border: 1px solid #fc4c02;
+}
+
+.navbar-default .navbar-nav .open #dx {
+  left: -154px;
+}
+
+@media (min-width: 768px) {
+  .content .user-info input {
+    width: 70%;
+  }
+
+  .content .user-info .input-boxx {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .content .user-info textarea {
+    width: 70%;
+  }
+}
+
+@media (min-width: 992px) {
+  .content .user-info input {
+    width: 70%;
+  }
+
+  .content .user-info .input-boxx {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}

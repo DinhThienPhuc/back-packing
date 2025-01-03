@@ -99,11 +99,11 @@
   background: white;
 }
 
-.content .tab-content .input-boxx {
+.content .tab-content .input-box {
   margin-top: 20px;
 }
 
-.content .tab-content .input-boxx > .fa {
+.content .tab-content .input-box > .fa {
   font-size: 16px;
   padding-right: 5px;
 }

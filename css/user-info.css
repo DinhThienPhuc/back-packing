@@ -53,7 +53,7 @@
   /* border-color: #fa4107; */
 }
 
-.content .user-info .input-boxx {
+.content .user-info .input-box {
   padding-top: 7px;
   padding-bottom: 7px;
 }
@@ -101,7 +101,7 @@
     width: 70%;
   }
 
-  .content .user-info .input-boxx {
+  .content .user-info .input-box {
     padding-top: 10px;
     padding-bottom: 10px;
   }
@@ -116,7 +116,7 @@
     width: 70%;
   }
 
-  .content .user-info .input-boxx {
+  .content .user-info .input-box {
     padding-top: 10px;
     padding-bottom: 10px;
   }
